@@ -1,38 +1,120 @@
-.App {
-  text-align: center;
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  background: #f4f6fa;
+  font-family: "Poppins", sans-serif;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* Utilities */
+
+.container {
+  width: 1200px;
+  margin: 0 auto;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* Header */
+
+header {
+  width: 100%;
+  height: 150px;
+  background: #538cfd;
+  padding-top: 45px;
+  border-bottom-left-radius: 100px;
+}
+
+nav {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.logo {
+  color: #ffffff;
+  font-size: 2rem;
+  font-weight: 700;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Search Form */
+
+.search-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  background: #ffffff;
+  height: 60px;
+  border-radius: 5px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  margin-top: 25px;
+}
+
+.form-control {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  border: none;
+  position: relative;
+  padding: 0;
+}
+
+.form-control i {
+  color: #538cfd;
+  margin-left: 1.5rem;
+  margin-right: 0.5rem;
+}
+
+.search-form input {
+  border: none;
+  outline: none;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  width: 100%;
+  color: #222222;
+}
+
+.form-input:after {
+  content: "";
+  position: absolute;
+  right: 0;
+  width: 1px;
+  height: 100%;
+  background: #b4b4b46c;
+}
+
+.search-form div:nth-child(3) {
+  display: flexbox;
+  align-items: center;
+}
+
+.full-time-check input {
+  width: 3rem;
+}
+
+.form-control span {
+  margin-right: auto;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.btn {
+  width: 110px;
+  height: 45px;
+  margin-right: 10px;
+  color: #ffffff;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  transition: 0.3s ease-in;
+}
+
+.btn-blue {
+  background: #538cfd;
+}
+
+.btn-blue:hover {
+  background: #ff5151;
+  color: #ffffff;
 }
