@@ -1,15 +1,14 @@
 import React, { useState } from "react";
-import useFetchJobs from "./components/useFetchJobs";
-import Job from "./components/Job";
-import JobsPagination from "./components/JobsPagination";
-import SearchForm from "./components/SearchForm";
-import Header from "./components/Header";
+import useFetchJobs from "./useFetchJobs";
+import Job from "./Job";
+import JobsPagination from "./JobsPagination";
+import SearchForm from "./SearchForm";
+import Header from "./Header";
 
-export default function App() {
+const Home = () => {
   const [params, setParams] = useState({});
   const [page, setPage] = useState(1);
   const { jobs, loading, error, hasNextPage } = useFetchJobs(params, page);
-  const [openModal, setOpenModal] = useState(false);
 
   function handleParamChange(e) {
     const param = e.target.name;
@@ -19,27 +18,8 @@ export default function App() {
       return { ...prevParams, [param]: value };
     });
   }
-
-  const changeModal = () => {
-    if (openModal === false) {
-      setOpenModal(true);
-    } else {
-      setOpenModal(false);
-    }
-  };
-
   return (
     <div>
-      <div
-        className={`${openModal ? "open-modal" : ""} job-detail`}
-        id="job-detail"
-      >
-        <div className="apply-job">
-          <h1>Testing Modal</h1>
-          <p>Lorem</p>
-          <button onClick={changeModal}>Close</button>
-        </div>
-      </div>
       <Header />
       <div className="container">
         <SearchForm params={params} onParamChange={handleParamChange} />
@@ -49,11 +29,14 @@ export default function App() {
         {error && <h1>Error, Try refreshing...</h1>}
         <div className="jobs-items">
           {jobs.map((job) => {
-            return <Job key={job.id} job={job} changeModal={changeModal} />;
+            return <Job key={job.id} job={job} />;
           })}
         </div>
       </section>
+
       <JobsPagination page={page} setPage={setPage} hasNextPage={hasNextPage} />
     </div>
   );
-}
+};
+
+export default Home;

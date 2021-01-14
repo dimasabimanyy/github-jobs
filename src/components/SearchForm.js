@@ -5,7 +5,7 @@ function SearchForm({ params, onParamChange }) {
     <>
       <form className="search-form">
         <div className="form-control form-input">
-          <i class="fas fa-search"></i>
+          <i className="fas fa-search"></i>
           <input
             type="text"
             name="description"
@@ -13,7 +13,7 @@ function SearchForm({ params, onParamChange }) {
           />
         </div>
         <div className="form-control form-input">
-          <i class="fas fa-map-marker-alt"></i>
+          <i className="fas fa-map-marker-alt"></i>
           <input
             type="text"
             name="description"

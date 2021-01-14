@@ -1,5 +1,4 @@
 import React from "react";
-import SearchForm from "./SearchForm";
 
 const Header = () => {
   return (
@@ -11,7 +10,6 @@ const Header = () => {
           </a>
           <div className="dark-mode">Dark</div>
         </nav>
-        <SearchForm />
       </div>
     </header>
   );
