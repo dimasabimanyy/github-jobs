@@ -1,11 +1,10 @@
 import React, { useState } from "react";
-import useFetchJobs from "./useFetchJobs";
-import Job from "./Job";
-import JobsPagination from "./JobsPagination";
-import SearchForm from "./SearchForm";
-import Header from "./Header";
+import useFetchJobs from "../components/useFetchJobs";
+import Job from "../components/Job";
+import JobsPagination from "../components/JobsPagination";
+import SearchForm from "../components/SearchForm";
 
-const Home = () => {
+export default function Home() {
   const [params, setParams] = useState({});
   const [page, setPage] = useState(1);
   const { jobs, loading, error, hasNextPage } = useFetchJobs(params, page);
@@ -18,9 +17,9 @@ const Home = () => {
       return { ...prevParams, [param]: value };
     });
   }
+
   return (
     <div>
-      <Header />
       <div className="container">
         <SearchForm params={params} onParamChange={handleParamChange} />
       </div>
@@ -33,10 +32,7 @@ const Home = () => {
           })}
         </div>
       </section>
-
       <JobsPagination page={page} setPage={setPage} hasNextPage={hasNextPage} />
     </div>
   );
-};
-
-export default Home;
+}

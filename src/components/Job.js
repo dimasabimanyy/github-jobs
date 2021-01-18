@@ -1,14 +1,11 @@
 import React, { useState } from "react";
-// import { Card, Badge, Button, Collapse } from "react-bootstrap";
 // import ReactMarkdown from "react-markdown";
 import placeholderLogo from "../images/placeholder.png";
+import { Link } from "react-router-dom";
 
-function Job({ job, changeModal }) {
+function Job({ job }) {
   // const [open, setOpen] = useState(false);
   const [singleJob, setSingleJob] = useState({ name: job.company });
-
-  // console.log(job);
-
   return (
     <div className="job">
       <div className="job-logo">
@@ -35,7 +32,7 @@ function Job({ job, changeModal }) {
       <h1 className="job-title">{job.title}</h1>
       <p className="job-company">{job.company}</p>
       <p className="job-location">{job.location}</p>
-      <p onClick={changeModal}>Apply Now</p>
+      <Link to={`/job/${job.id}`}>Apply Job</Link>
     </div>
     // <Card className="mb-3">
     //   <Card.Body>

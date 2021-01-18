@@ -7,22 +7,33 @@ function SearchForm({ params, onParamChange }) {
         <div className="form-control form-input">
           <i className="fas fa-search"></i>
           <input
-            type="text"
-            name="description"
             placeholder="Filter by title, companies, expertise..."
+            onChange={onParamChange}
+            value={params.description}
+            name="description"
+            type="text"
           />
         </div>
         <div className="form-control form-input">
           <i className="fas fa-map-marker-alt"></i>
           <input
             type="text"
-            name="description"
+            name="location"
             placeholder="Filter by location..."
+            onChange={onParamChange}
+            value={params.location}
           />
         </div>
         <div className="form-control">
           <div className="full-time-check">
-            <input type="checkbox" name="full time" />
+            <input
+              onChange={onParamChange}
+              value={params.full_time}
+              name="full_time"
+              id="full_time"
+              label="Only Full Time"
+              type="checkbox"
+            />
           </div>
           <span>Full Time Only</span>
           <button type="submit" className="btn btn-blue">

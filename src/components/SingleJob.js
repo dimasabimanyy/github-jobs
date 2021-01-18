@@ -1,9 +1,17 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
-const SingleJob = (props) => {
-  const { singleJob } = props.location.state;
+const SingleJob = ({ id }) => {
+  const [singleJob, setSingleJob] = useState({});
 
-  console.log(singleJob);
+  useEffect(() => {
+    const getData = fetch(
+      `https://jobs.github.com/positions/${id}.json?markdown=true`
+    )
+      .then((res) => res.json())
+      .then((data) => setSingleJob(data) && console.log(data));
+
+    getData();
+  }, []);
 
   return <div></div>;
 };
