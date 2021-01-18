@@ -1,38 +1,52 @@
-import React, { useState } from "react";
+import React from "react";
 // import ReactMarkdown from "react-markdown";
 import placeholderLogo from "../images/placeholder.png";
 import { Link } from "react-router-dom";
 
 function Job({ job }) {
-  // const [open, setOpen] = useState(false);
-  const [singleJob, setSingleJob] = useState({ name: job.company });
   return (
     <div className="job">
-      <div className="job-logo">
-        {job.company_logo ? (
-          <img
-            className="job-logo-exist"
-            height="50"
-            alt={job.company}
-            src={job.company_logo}
-          />
-        ) : (
-          <img
-            className="job-logo-noexist"
-            height="50"
-            alt={job.company}
-            src={placeholderLogo}
-          />
-        )}
+      <div className="job-top-info">
+        <div className="job-logo">
+          {job.company_logo ? (
+            <img
+              className="job-logo-exist"
+              height="50"
+              alt={job.company}
+              src={job.company_logo}
+            />
+          ) : (
+            <img
+              className="job-logo-noexist"
+              height="50"
+              alt={job.company}
+              src={placeholderLogo}
+            />
+          )}
+        </div>
+        <div className="job-heading">
+          <h1>{job.title}</h1>
+          <div className="job-sub-title">
+            <p className="job-company">
+              <i className="fas fa-building"></i>
+              {job.company}
+            </p>
+            <p className="job-location">
+              <i className="fas fa-map-marker-alt"></i>
+              {job.location}
+            </p>
+          </div>
+        </div>
       </div>
-      <div className="job-date">
-        {new Date(job.created_at).toLocaleDateString()}{" "}
-        <i className="fas fa-circle"></i> {job.type}
+      <div className="job-side-info">
+        <p className="job-type">{job.type}</p>
+        <p className="job-date">
+          <i class="far fa-calendar"></i>{" "}
+          {new Date(job.created_at).toLocaleDateString()}
+        </p>
       </div>
-      <h1 className="job-title">{job.title}</h1>
-      <p className="job-company">{job.company}</p>
-      <p className="job-location">{job.location}</p>
-      <Link to={`/job/${job.id}`}>Apply Job</Link>
+
+      {/* <Link to={`/job/${job.id}`}>Apply Job</Link> */}
     </div>
     // <Card className="mb-3">
     //   <Card.Body>
