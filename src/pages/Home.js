@@ -29,10 +29,14 @@ export default function Home() {
   };
 
   return (
-    <div className={dark ? "app dark" : "app"}>
+    <div className={dark ? "app darkest" : "app light"}>
       <Header dark={dark} modeChanger={modeChanger} />
       <main className="main-content container">
-        <SearchForm params={params} onParamChange={handleParamChange} />
+        <SearchForm
+          params={params}
+          onParamChange={handleParamChange}
+          dark={dark}
+        />
         <section className="jobs-wrapper container">
           {loading ? (
             <div className="loading">
@@ -46,7 +50,7 @@ export default function Home() {
             <div>
               <div className="jobs-items">
                 {jobs.map((job) => {
-                  return <Job key={job.id} job={job} />;
+                  return <Job key={job.id} job={job} dark={dark} />;
                 })}
               </div>
               <div className="pagination-bottom">

@@ -1,10 +1,10 @@
 import React from "react";
 
-function SearchForm({ params, onParamChange }) {
+function SearchForm({ params, onParamChange, dark }) {
   return (
     <>
-      <form className="search-form">
-        <div className="form-control form-input">
+      <form className={`search-form ${dark ? "dark" : "light"}`}>
+        <div className={`form-control form-input ${dark ? "dark" : "light"}`}>
           <i className="fas fa-search"></i>
           <input
             placeholder="Filter by title, companies, expertise..."
@@ -12,9 +12,10 @@ function SearchForm({ params, onParamChange }) {
             value={params.description}
             name="description"
             type="text"
+            className={`search-input ${dark ? "dark" : "light"}`}
           />
         </div>
-        <div className="form-control form-input">
+        <div className={`form-control form-input ${dark ? "dark" : "light"}`}>
           <i className="fas fa-map-marker-alt"></i>
           <input
             type="text"
@@ -22,9 +23,10 @@ function SearchForm({ params, onParamChange }) {
             placeholder="Filter by location..."
             onChange={onParamChange}
             value={params.location}
+            className={`search-input ${dark ? "dark" : "light"}`}
           />
         </div>
-        <div className="form-control">
+        <div className={`form-control ${dark ? "dark" : "light"}`}>
           <div className="full-time-check">
             <input
               onChange={onParamChange}
@@ -33,48 +35,16 @@ function SearchForm({ params, onParamChange }) {
               id="full_time"
               label="Only Full Time"
               type="checkbox"
+              className={`${dark ? "dark" : "light"}`}
             />
           </div>
-          <span>Full Time Only</span>
+          <span className="full-time">Full Time Only</span>
           <button type="submit" className="btn btn-blue">
             Search
           </button>
         </div>
       </form>
     </>
-    // <Form className="mb-4">
-    //   <Form.Row className="align-items-end">
-    //     <Form.Group as={Col}>
-    //       <Form.Label>Description</Form.Label>
-    //       <Form.Control
-    //         onChange={onParamChange}
-    //         value={params.description}
-    //         name="description"
-    //         type="text"
-    //       />
-    //     </Form.Group>
-    //     <Form.Group as={Col}>
-    //       <Form.Label>Location</Form.Label>
-    //       <Form.Control
-    //         onChange={onParamChange}
-    //         value={params.location}
-    //         name="location"
-    //         type="text"
-    //       />
-    //     </Form.Group>
-    //     <Form.Group as={Col} xs="auto" className="ml-2">
-    //       <Form.Check
-    //         onChange={onParamChange}
-    //         value={params.full_time}
-    //         name="full_time"
-    //         id="full_time"
-    //         label="Only Full Time"
-    //         type="checkbox"
-    //         className="mb-2"
-    //       />
-    //     </Form.Group>
-    //   </Form.Row>
-    // </Form>
   );
 }
 

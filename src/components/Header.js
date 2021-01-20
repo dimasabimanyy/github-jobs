@@ -5,7 +5,11 @@ const Header = ({ dark, modeChanger }) => {
     <header>
       <div className="header">
         <nav>
-          <a href="/" alt="github jobs" className="logo">
+          <a
+            href="/"
+            alt="github jobs"
+            className={`logo ${dark ? "dark" : "light"}`}
+          >
             devjobs
           </a>
           <div className="dark-mode">
