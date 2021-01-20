@@ -4,7 +4,12 @@ import { Link } from "react-router-dom";
 
 function Job({ job, dark }) {
   return (
-    <Link to={`/job/${job.id}`}>
+    <Link
+      to={{
+        pathname: `/job/${job.id}`,
+        state: { dark: dark },
+      }}
+    >
       <div className={`job ${dark ? "dark" : "light"}`}>
         <div className="job-top-info">
           <div className="job-logo">

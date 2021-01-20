@@ -129,6 +129,14 @@
   background: #18202d;
 }
 
+.markdown-white {
+  background: #fff;
+}
+
+.markdown-white.dark {
+  background: #18202d;
+}
+
 .markdown p {
   font-size: 14px;
   line-height: 26px;

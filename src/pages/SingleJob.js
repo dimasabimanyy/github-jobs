@@ -3,12 +3,13 @@ import axios from "axios";
 import Header from "../components/Header";
 import ReactMarkdown from "react-markdown";
 import Footer from "../components/Footer";
+import loader from "../images/loader.svg";
 
-const SingleJob = ({ match }) => {
+const SingleJob = ({ match, location }) => {
   const [job, setJob] = useState({});
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(true);
-  const [dark, setDark] = useState(false);
+  const [dark, setDark] = useState(location.state.dark);
 
   useEffect(() => {
     axios
@@ -36,8 +37,8 @@ const SingleJob = ({ match }) => {
           <h1>Error</h1>
         </div>
       ) : loading ? (
-        <div className="container">
-          <h1>Loading</h1>
+        <div className="loading container">
+          <img src={loader} alt="Loading..." />
         </div>
       ) : (
         <div className={`single-job container`}>

@@ -5,6 +5,7 @@ import JobsPagination from "../components/JobsPagination";
 import SearchForm from "../components/SearchForm";
 import Header from "../components/Header";
 import Footer from "../components/Footer.js";
+import loader from "../images/loader.svg";
 
 export default function Home() {
   const [params, setParams] = useState({});
@@ -41,7 +42,7 @@ export default function Home() {
         <section className={`jobs-wrapper container `}>
           {loading ? (
             <div className="loading">
-              <h1>Loading...</h1>
+              <img src={loader} alt="Loading.." />
             </div>
           ) : error ? (
             <div className="error">

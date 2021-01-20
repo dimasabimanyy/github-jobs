@@ -99,8 +99,12 @@ nav {
   font-weight: 700;
 }
 
-.logo.dark {
-  color: #fff;
+.logo.darkest {
+  color: #f0f0f0;
+}
+
+.logo.darkest:hover {
+  color: #f0f0f0;
 }
 
 .logo.light {
@@ -132,9 +136,13 @@ nav {
   color: rgb(250, 146, 11) !important;
 }
 
-.toggle input:checked + label:before {
+.toggle.dark input + label:before {
   transform: translatex(21px);
 }
+
+/* .toggle input:checked + label:before {
+  transform: translatex(21px);
+} */
 
 .toggle label {
   display: block;
@@ -159,7 +167,7 @@ nav {
   transition: 0.25s ease-out;
   width: 26px;
   height: 26px;
-  background-color: #538cfd;
+  background-color: #36c6ff;
   border-radius: 50%;
   transform-origin: 50% 50%;
   top: -4px;
@@ -184,4 +192,11 @@ footer.darkest {
 }
 footer.darkest a {
   color: rgb(196, 196, 196);
+}
+
+/* Loading & Error */
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

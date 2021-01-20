@@ -8,7 +8,7 @@ const Header = ({ dark, modeChanger }) => {
           <a
             href="/"
             alt="github jobs"
-            className={`logo ${dark ? "dark" : "light"}`}
+            className={`logo ${dark ? "darkest" : "light"}`}
           >
             devjobs
           </a>
