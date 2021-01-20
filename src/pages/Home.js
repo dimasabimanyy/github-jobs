@@ -4,6 +4,7 @@ import Job from "../components/Job";
 import JobsPagination from "../components/JobsPagination";
 import SearchForm from "../components/SearchForm";
 import Header from "../components/Header";
+import Footer from "../components/Footer.js";
 
 export default function Home() {
   const [params, setParams] = useState({});
@@ -37,7 +38,7 @@ export default function Home() {
           onParamChange={handleParamChange}
           dark={dark}
         />
-        <section className="jobs-wrapper container">
+        <section className={`jobs-wrapper container `}>
           {loading ? (
             <div className="loading">
               <h1>Loading...</h1>
@@ -62,10 +63,9 @@ export default function Home() {
               </div>
             </div>
           )}
-          {/* {loading && <h1>Loading...</h1>}
-          {error && <h1>Error, Try refreshing...</h1>} */}
         </section>
       </main>
+      <Footer dark={dark} />
     </div>
   );
 }

@@ -2,11 +2,13 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Header from "../components/Header";
 import ReactMarkdown from "react-markdown";
+import Footer from "../components/Footer";
 
 const SingleJob = ({ match }) => {
   const [job, setJob] = useState({});
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [dark, setDark] = useState(false);
 
   useEffect(() => {
     axios
@@ -18,31 +20,40 @@ const SingleJob = ({ match }) => {
       .catch((e) => setError(true) && console.log(error));
   }, []);
 
-  console.log(job);
+  const modeChanger = () => {
+    if (dark === true) {
+      setDark(false);
+    } else {
+      setDark(true);
+    }
+  };
 
   return (
-    <section id="single-job" className="app">
-      <Header />
+    <section id="single-job" className={`app ${dark ? "darkest" : "light"}`}>
+      <Header dark={dark} modeChanger={modeChanger} />
       {error ? (
-        <h1>Error</h1>
+        <div className="container">
+          <h1>Error</h1>
+        </div>
       ) : loading ? (
-        <h1>Loading</h1>
+        <div className="container">
+          <h1>Loading</h1>
+        </div>
       ) : (
-        <div className="single-job container">
-          <div className="sj-heading">
+        <div className={`single-job container`}>
+          <div className={`sj-heading ${dark ? "dark" : "light"}`}>
             <div className="sj-heading-left">
               <div className="sj-logo">
                 <img src={job.company_logo} alt={job.company} />
               </div>
               <h1>{job.company}</h1>
             </div>
-
             <a href={job.company_url} className="sj-website">
               Company Site
             </a>
           </div>
 
-          <main className="sj-main-content">
+          <main className={`sj-main-content ${dark ? "dark" : "light"}`}>
             <div className="sj-top-content">
               <div>
                 <p className="sj-date">
@@ -52,35 +63,30 @@ const SingleJob = ({ match }) => {
                 <h1>{job.title}</h1>
                 <h5>{job.location}</h5>
               </div>
-              <div>
+              <div className="sj-apply-now">
                 <a href="" alt="">
                   Apply Now
                 </a>
               </div>
             </div>
-            <div className="sj-description markdown">
+            <div
+              className={`sj-description markdown markdown-white ${
+                dark ? "dark" : "light"
+              }`}
+            >
               <ReactMarkdown source={job.description} />
             </div>
           </main>
 
           <main className="sj-main-content sj-apply">
             <h5>How to Apply</h5>
-            <div className="markdown">
+            <div className="markdown markdown-blue">
               <ReactMarkdown source={job.how_to_apply} />
             </div>
           </main>
         </div>
       )}
-      <div id="sj-bottom">
-        <div className="container sj-bottom">
-          <h1>{job.company}</h1>
-          <div>
-            <a href="" alt="">
-              Apply Now
-            </a>
-          </div>
-        </div>
-      </div>
+      <Footer dark={dark} />
     </section>
   );
 };

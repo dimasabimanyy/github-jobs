@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 function Job({ job, dark }) {
   return (
     <Link to={`/job/${job.id}`}>
-      <div className={`job ${dark ? "dark" : ""}`}>
+      <div className={`job ${dark ? "dark" : "light"}`}>
         <div className="job-top-info">
           <div className="job-logo">
             {job.company_logo ? (

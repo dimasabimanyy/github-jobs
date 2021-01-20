@@ -14,7 +14,7 @@ const Header = ({ dark, modeChanger }) => {
           </a>
           <div className="dark-mode">
             <i className={`fas fa-sun ${dark ? "" : "shine"}`}></i>
-            <div class="toggle">
+            <div class={`toggle ${dark ? "dark" : "light"}`}>
               <input type="checkbox" id="toggle-slide" onClick={modeChanger} />
               <label for="toggle-slide"></label>
             </div>
