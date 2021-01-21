@@ -80,10 +80,13 @@ header {
   font-weight: 700;
   font-size: 38px;
   color: #fff;
+  margin: 0;
 }
 
 .header h5 {
-  font-size: 17px;
+  margin: 0;
+  margin-top: 0.5rem;
+  font-size: 15px;
   color: #fff;
 }
 
@@ -195,4 +198,10 @@ footer.darkest a {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+@media screen and (max-width: 800px) {
+  .loading img {
+    width: 120px;
+  }
 }

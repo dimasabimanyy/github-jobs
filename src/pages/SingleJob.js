@@ -74,9 +74,9 @@ const SingleJob = ({ match, location }) => {
               </div>
             </div>
             <div
-              className={`sj-description markdown markdown-white ${
-                dark ? "dark" : "light"
-              }`}
+              className={`${
+                dark ? "dark markdown-dark" : "markdown-light"
+              } markdown markdown-white `}
             >
               <ReactMarkdown source={job.description} />
             </div>
