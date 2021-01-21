@@ -41,16 +41,16 @@
   font-family: "Open Sans", sans-serif;
 }
 
+.search-input.light {
+  color: #414141ab;
+}
+
 .search-input.light::placeholder {
   color: #414141ab;
 }
 
 .search-input.dark::placeholder {
   color: #f0f0f0e1;
-}
-
-.search-input.light {
-  color: #b4b4b46c;
 }
 
 .search-input.dark {
@@ -104,6 +104,11 @@
 }
 
 /* Jobs Section */
+.jobs-items {
+  border-radius: 5px;
+  overflow: hidden;
+}
+
 .job {
   display: flex;
   align-items: center;
@@ -141,8 +146,8 @@
 }
 
 .job-logo img {
-  width: 60px;
-  height: 60px;
+  width: 100%;
+  height: 100%;
   object-fit: contain;
 }
 
@@ -210,4 +215,14 @@
   padding: 2rem;
   text-align: center;
   background: #ffffff;
+}
+
+.no-jobs {
+  font-size: 24px;
+  text-align: center;
+  font-weight: 600;
+}
+
+.no-jobs.darkest {
+  color: #dfdfdf;
 }

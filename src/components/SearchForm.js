@@ -2,28 +2,28 @@ import React from "react";
 
 function SearchForm({ params, onParamChange, dark }) {
   return (
-    <>
+    <div id="search-form" className="wrapper">
       <form className={`search-form ${dark ? "dark" : "light"}`}>
         <div className={`form-control form-input ${dark ? "dark" : "light"}`}>
           <i className="fas fa-search"></i>
           <input
             placeholder="Filter by title, companies, expertise..."
+            className={`search-input ${dark ? "dark" : "light"}`}
             onChange={onParamChange}
             value={params.description}
-            name="description"
             type="text"
-            className={`search-input ${dark ? "dark" : "light"}`}
+            name="description"
           />
         </div>
         <div className={`form-control form-input ${dark ? "dark" : "light"}`}>
           <i className="fas fa-map-marker-alt"></i>
           <input
+            className={`search-input ${dark ? "dark" : "light"}`}
             type="text"
             name="location"
             placeholder="Filter by location..."
             onChange={onParamChange}
             value={params.location}
-            className={`search-input ${dark ? "dark" : "light"}`}
           />
         </div>
         <div className={`form-control ${dark ? "dark" : "light"}`}>
@@ -39,12 +39,12 @@ function SearchForm({ params, onParamChange, dark }) {
             />
           </div>
           <span className="full-time">Full Time Only</span>
-          <button type="submit" className="btn btn-blue">
+          {/* <button type="submit" className="btn btn-blue">
             Search
-          </button>
+          </button> */}
         </div>
       </form>
-    </>
+    </div>
   );
 }
 

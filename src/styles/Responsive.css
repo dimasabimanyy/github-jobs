@@ -1,0 +1,104 @@
+/* Tablet Screen */
+@media screen and (max-width: 1000px) {
+}
+
+@media screen and (max-width: 1000px) {
+  .app {
+    /* background: coral; */
+  }
+
+  .wrapper {
+    width: 90%;
+  }
+
+  /* Homepage */
+  .header-wrapper {
+    height: 175px;
+  }
+
+  .main-content {
+    padding: 0;
+  }
+
+  header {
+    padding: 0 1rem;
+  }
+
+  nav {
+    width: 93%;
+    margin: 0 auto;
+    padding: 1rem 0;
+  }
+
+  .header-wrapper {
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .header h1 {
+    font-size: 26px;
+  }
+
+  .header h5 {
+    font-size: 14px;
+  }
+
+  .logo {
+    font-size: 19px;
+  }
+
+  .toggle label {
+    width: 40px;
+    height: 20px;
+  }
+
+  .toggle label:before {
+    top: -4px;
+    width: 23px;
+    height: 23px;
+  }
+
+  /* Search Form */
+  .search-form {
+    margin-bottom: 2rem;
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+
+  .search-form input {
+    font-size: 14px;
+  }
+
+  /* Job Section */
+  .job {
+    display: block;
+    padding: 1.5rem 1rem;
+  }
+
+  .job-top-info {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 0.5rem;
+  }
+
+  .job-logo {
+    width: 50px;
+    height: 50px;
+  }
+
+  .job-heading h1 {
+    margin-top: 0.9rem;
+    margin-bottom: 0.5rem;
+    font-size: 16px;
+  }
+
+  .job-side-info {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  .job-sub-title {
+    font-size: 13px;
+  }
+}

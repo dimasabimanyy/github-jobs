@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import "../styles/App.css";
+import "../styles/Home.css";
+import "../styles/Responsive.css";
 import useFetchJobs from "../components/useFetchJobs";
 import Job from "../components/Job";
 import JobsPagination from "../components/JobsPagination";
@@ -30,42 +33,48 @@ export default function Home() {
     }
   };
 
+  console.log(jobs.length);
+
   return (
     <div className={dark ? "app darkest" : "app light"}>
       <Header dark={dark} modeChanger={modeChanger} />
-      <main className="main-content container">
-        <SearchForm
-          params={params}
-          onParamChange={handleParamChange}
-          dark={dark}
-        />
-        <section className={`jobs-wrapper container `}>
-          {loading ? (
-            <div className="loading">
-              <img src={loader} alt="Loading.." />
-            </div>
-          ) : error ? (
-            <div className="error">
-              <h1>Error</h1>
-            </div>
-          ) : (
-            <div>
-              <div className="jobs-items">
-                {jobs.map((job) => {
+      <SearchForm
+        params={params}
+        onParamChange={handleParamChange}
+        dark={dark}
+      />
+      <section className="jobs-wrapper wrapper">
+        {loading ? (
+          <div className="loading">
+            <img src={loader} alt="Loading.." />
+          </div>
+        ) : error ? (
+          <div className="error">
+            <h1>Error</h1>
+          </div>
+        ) : (
+          <div>
+            <div className="jobs-items">
+              {jobs.length === 0 ? (
+                <h1 className={`no-jobs ${dark ? "dark" : "light"}`}>
+                  No Jobs Found
+                </h1>
+              ) : (
+                jobs.map((job) => {
                   return <Job key={job.id} job={job} dark={dark} />;
-                })}
-              </div>
-              <div className="pagination-bottom">
-                <JobsPagination
-                  page={page}
-                  setPage={setPage}
-                  hasNextPage={hasNextPage}
-                />
-              </div>
+                })
+              )}
             </div>
-          )}
-        </section>
-      </main>
+            <div className="pagination-bottom">
+              <JobsPagination
+                page={page}
+                setPage={setPage}
+                hasNextPage={hasNextPage}
+              />
+            </div>
+          </div>
+        )}
+      </section>
       <Footer dark={dark} />
     </div>
   );

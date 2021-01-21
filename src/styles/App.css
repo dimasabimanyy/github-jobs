@@ -45,8 +45,8 @@ a:hover {
 
 /* Utilities */
 
-.container {
-  width: 900px;
+.wrapper {
+  width: 850px;
   margin: 0 auto;
 }
 
@@ -139,10 +139,6 @@ nav {
 .toggle.dark input + label:before {
   transform: translatex(21px);
 }
-
-/* .toggle input:checked + label:before {
-  transform: translatex(21px);
-} */
 
 .toggle label {
   display: block;

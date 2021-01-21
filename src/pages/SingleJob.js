@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from "react";
+import "../styles/App.css";
+import "../styles/SingleJob.css";
+import "../styles/Responsive.css";
 import axios from "axios";
 import Header from "../components/Header";
 import ReactMarkdown from "react-markdown";
