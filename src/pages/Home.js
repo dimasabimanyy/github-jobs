@@ -34,7 +34,7 @@ export default function Home() {
     const savedMode = JSON.parse(localStorage.getItem("dark"));
     const userPrefersDark = getPrefColorScheme();
     if (isReturningUser) {
-      // if modoe was saved -> dark / light
+      // if mode was saved -> dark / light
       return savedMode;
     } else if (userPrefersDark) {
       // if  preferred color scheme is darak -> dark
@@ -57,8 +57,6 @@ export default function Home() {
       setDark(true);
     }
   };
-
-  console.log(jobs.length);
 
   return (
     <div className={dark ? "app darkest" : "app light"}>
@@ -95,6 +93,7 @@ export default function Home() {
                 page={page}
                 setPage={setPage}
                 hasNextPage={hasNextPage}
+                dark={dark}
               />
             </div>
           </div>

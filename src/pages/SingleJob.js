@@ -12,7 +12,8 @@ const SingleJob = ({ match, location }) => {
   const [job, setJob] = useState({});
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(true);
-  const [dark, setDark] = useState(location.state.dark);
+  // const [dark, setDark] = useState(location.state.dark);
+  const [dark, setDark] = useState(getInitialMode());
 
   useEffect(() => {
     axios
@@ -24,6 +25,31 @@ const SingleJob = ({ match, location }) => {
       .catch((e) => setError(true) && console.log(error));
   }, []);
 
+  useEffect(() => {
+    localStorage.setItem("dark", JSON.stringify(dark));
+  }, [dark]);
+
+  function getInitialMode() {
+    const isReturningUser = "dark" in localStorage;
+    const savedMode = JSON.parse(localStorage.getItem("dark"));
+    const userPrefersDark = getPrefColorScheme();
+    if (isReturningUser) {
+      // if mode was saved -> dark / light
+      return savedMode;
+    } else if (userPrefersDark) {
+      // if  preferred color scheme is darak -> dark
+      return true;
+    } else {
+      // otherwises -> light
+      return false;
+    }
+  }
+
+  function getPrefColorScheme() {
+    if (!window.matchMedia) return;
+    return window.matchMedia("(prefers-color-scheme:dark)").matches;
+  }
+
   const modeChanger = () => {
     if (dark === true) {
       setDark(false);
@@ -31,6 +57,8 @@ const SingleJob = ({ match, location }) => {
       setDark(true);
     }
   };
+
+  console.log(job);
 
   return (
     <section id="single-job" className={`app ${dark ? "darkest" : "light"}`}>
@@ -59,19 +87,12 @@ const SingleJob = ({ match, location }) => {
 
           <main className={`sj-main-content ${dark ? "dark" : "light"}`}>
             <div className="sj-top-content">
-              <div>
-                <p className="sj-date">
-                  <i class="far fa-calendar"></i>{" "}
-                  {new Date(job.created_at).toLocaleDateString()}
-                </p>
-                <h1>{job.title}</h1>
-                <h5>{job.location}</h5>
-              </div>
-              <div className="sj-apply-now">
-                <a href="" alt="">
-                  Apply Now
-                </a>
-              </div>
+              <p className="sj-date">
+                <i class="far fa-calendar"></i>{" "}
+                {new Date(job.created_at).toLocaleDateString()}
+              </p>
+              <h1>{job.title}</h1>
+              <h5>{job.location}</h5>
             </div>
             <div
               className={`${

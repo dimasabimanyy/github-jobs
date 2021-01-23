@@ -52,11 +52,16 @@
 }
 
 .sj-website {
-  background: #2c64ff;
+  background: #36c6ff;
   margin: auto 2.5rem;
   padding: 1rem;
   color: #fff;
   border-radius: 5px;
+  transition: 0.3s eases;
+}
+
+.sj-website:hover {
+  background: #3694ff;
 }
 
 .sj-website:hover {
@@ -64,10 +69,6 @@
 }
 
 .sj-top-content {
-  display: flex;
-  justify-content: space-between;
-  gap: 2rem;
-  align-items: center;
   margin-bottom: 2.5rem;
 }
 
@@ -100,22 +101,6 @@
 
 .sj-main-content.dark .sj-date {
   color: #d4d4d4;
-}
-
-.sj-apply-now {
-  background: #36c6ff;
-  padding: 13px 20px;
-  border-radius: 5px;
-  transition: 0.3s ease;
-}
-
-.sj-apply-now:hover {
-  background: #2c64ff;
-}
-
-.sj-apply-now a {
-  color: #fff;
-  font-size: 14px;
 }
 
 .sj-main-content {
