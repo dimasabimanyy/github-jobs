@@ -6,7 +6,10 @@ const Footer = ({ dark }) => {
       <div className="container">
         <p>
           &copy;{" "}
-          <a href="" alt="">
+          <a
+            href="https://github.com/dimasabimanyy/github-jobs"
+            alt="Github Repo "
+          >
             Dimas Abimanyu 2021
           </a>{" "}
         </p>

@@ -8,7 +8,7 @@ import ReactMarkdown from "react-markdown";
 import Footer from "../components/Footer";
 import loader from "../images/loader.svg";
 
-const SingleJob = ({ match, location }) => {
+const SingleJob = ({ match }) => {
   const [job, setJob] = useState({});
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(true);
@@ -16,14 +16,17 @@ const SingleJob = ({ match, location }) => {
   const [dark, setDark] = useState(getInitialMode());
 
   useEffect(() => {
-    axios
-      .get(`/positions/${match.params.id}.json?markdown=true`)
-      .then((res) => {
-        setJob(res.data);
-        setLoading(false);
-      })
-      .catch((e) => setError(true) && console.log(error));
-  }, []);
+    const getData = () =>
+      axios
+        .get(`/positions/${match.params.id}.json?markdown=true`)
+        .then((res) => {
+          setJob(res.data);
+          setLoading(false);
+        })
+        .catch((e) => setError(true) && console.log(error));
+
+    getData();
+  });
 
   useEffect(() => {
     localStorage.setItem("dark", JSON.stringify(dark));
@@ -57,8 +60,6 @@ const SingleJob = ({ match, location }) => {
       setDark(true);
     }
   };
-
-  console.log(job);
 
   return (
     <section id="single-job" className={`app ${dark ? "darkest" : "light"}`}>
