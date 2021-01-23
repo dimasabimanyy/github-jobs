@@ -26,7 +26,7 @@ const SingleJob = ({ match }) => {
         .catch((e) => setError(true) && console.log(error));
 
     getData();
-  });
+  }, []);
 
   useEffect(() => {
     localStorage.setItem("dark", JSON.stringify(dark));
