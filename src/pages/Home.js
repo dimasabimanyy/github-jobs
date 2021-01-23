@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../styles/App.css";
 import "../styles/Home.css";
 import "../styles/Responsive.css";
@@ -14,7 +14,7 @@ export default function Home() {
   const [params, setParams] = useState({});
   const [page, setPage] = useState(1);
   const { jobs, loading, error, hasNextPage } = useFetchJobs(params, page);
-  const [dark, setDark] = useState(false);
+  const [dark, setDark] = useState(getInitialMode());
 
   function handleParamChange(e) {
     const param = e.target.name;
@@ -23,6 +23,31 @@ export default function Home() {
     setParams((prevParams) => {
       return { ...prevParams, [param]: value };
     });
+  }
+
+  useEffect(() => {
+    localStorage.setItem("dark", JSON.stringify(dark));
+  }, [dark]);
+
+  function getInitialMode() {
+    const isReturningUser = "dark" in localStorage;
+    const savedMode = JSON.parse(localStorage.getItem("dark"));
+    const userPrefersDark = getPrefColorScheme();
+    if (isReturningUser) {
+      // if modoe was saved -> dark / light
+      return savedMode;
+    } else if (userPrefersDark) {
+      // if  preferred color scheme is darak -> dark
+      return true;
+    } else {
+      // otherwises -> light
+      return false;
+    }
+  }
+
+  function getPrefColorScheme() {
+    if (!window.matchMedia) return;
+    return window.matchMedia("(prefers-color-scheme:dark)").matches;
   }
 
   const modeChanger = () => {

@@ -1,5 +1,4 @@
 import React from "react";
-import { Pagination } from "react-bootstrap";
 
 function JobsPagination({ page, setPage, hasNextPage }) {
   function adjustPage(amount) {
@@ -7,25 +6,23 @@ function JobsPagination({ page, setPage, hasNextPage }) {
   }
 
   return (
-    <Pagination>
-      {page !== 1 && <Pagination.Prev onClick={() => adjustPage(-1)} />}
+    <div>
       {page !== 1 && (
-        <Pagination.Item onClick={() => setPage(1)}>1</Pagination.Item>
+        <div onClick={() => adjustPage(-1)}>
+          <h1>Prev</h1>
+        </div>
       )}
-      {page > 2 && <Pagination.Ellipsis />}
-      {page > 2 && (
-        <Pagination.Item onClick={() => adjustPage(-1)}>
-          {page - 1}
-        </Pagination.Item>
-      )}
-      <Pagination.Item active>{page}</Pagination.Item>
+      {page !== 1 && <div onClick={() => setPage(1)}>1</div>}
+      {page > 2 && <div></div>}
+      {page > 2 && <div onClick={() => adjustPage(-1)}>{page - 1}</div>}
+      <div active>{page}</div>
+      {hasNextPage && <div onClick={() => adjustPage(1)}>{page + 1}</div>}
       {hasNextPage && (
-        <Pagination.Item onClick={() => adjustPage(1)}>
-          {page + 1}
-        </Pagination.Item>
+        <div onClick={() => adjustPage(1)}>
+          <h1>Next</h1>
+        </div>
       )}
-      {hasNextPage && <Pagination.Next onClick={() => adjustPage(1)} />}
-    </Pagination>
+    </div>
   );
 }
 

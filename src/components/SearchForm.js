@@ -32,16 +32,13 @@ function SearchForm({ params, onParamChange, dark }) {
               onChange={onParamChange}
               value={params.full_time}
               name="full_time"
-              id="full_time"
+              id="full-time"
               label="Only Full Time"
               type="checkbox"
               className={`${dark ? "dark" : "light"}`}
             />
           </div>
           <span className="full-time">Full Time Only</span>
-          {/* <button type="submit" className="btn btn-blue">
-            Search
-          </button> */}
         </div>
       </form>
     </div>

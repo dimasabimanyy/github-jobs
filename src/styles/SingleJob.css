@@ -134,6 +134,9 @@
 }
 
 /* Markdown */
+.markdown {
+  word-wrap: break-word;
+}
 
 .markdown-white {
   background: #fff;
