@@ -12,21 +12,7 @@ const SingleJob = ({ match }) => {
   const [job, setJob] = useState({});
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(true);
-  // const [dark, setDark] = useState(location.state.dark);
   const [dark, setDark] = useState(getInitialMode());
-
-  useEffect(() => {
-    const getData = () =>
-      axios
-        .get(`/positions/${match.params.id}.json?markdown=true`)
-        .then((res) => {
-          setJob(res.data);
-          setLoading(false);
-        })
-        .catch((e) => setError(true) && console.log(error));
-
-    getData();
-  }, []);
 
   useEffect(() => {
     localStorage.setItem("dark", JSON.stringify(dark));
@@ -61,6 +47,21 @@ const SingleJob = ({ match }) => {
     }
   };
 
+  useEffect(() => {
+    const getData = () =>
+      axios
+        .get(`/positions/${match.params.id}.json?markdown=true`)
+        .then((res) => {
+          setJob(res.data);
+          setLoading(false);
+        })
+        .catch((e) => setError(true) && console.log(error));
+
+    getData();
+  }, []);
+
+  console.log(job);
+
   return (
     <section id="single-job" className={`app ${dark ? "darkest" : "light"}`}>
       <Header dark={dark} modeChanger={modeChanger} />
@@ -89,7 +90,7 @@ const SingleJob = ({ match }) => {
           <main className={`sj-main-content ${dark ? "dark" : "light"}`}>
             <div className="sj-top-content">
               <p className="sj-date">
-                <i class="far fa-calendar"></i>{" "}
+                <i className="far fa-calendar"></i>{" "}
                 {new Date(job.created_at).toLocaleDateString()}
               </p>
               <h1>{job.title}</h1>
