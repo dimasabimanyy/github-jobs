@@ -47,13 +47,12 @@ const SingleJob = ({ match }) => {
     }
   };
 
-  console.log("This is match : " + match);
-  console.log("match id" + match.params.id);
-
   useEffect(() => {
     const getData = () =>
       axios
-        .get(`/positions/${match.params.id}.json?markdown=true`)
+        .get(
+          `https://cors-anywhere.herokuapp.com/https://jobs.github.com/positions/${match.params.id}.json?markdown=true`
+        )
         .then((res) => {
           setJob(res.data);
           setLoading(false);
@@ -63,8 +62,6 @@ const SingleJob = ({ match }) => {
 
     getData();
   }, []);
-
-  // console.log(job);
 
   return (
     <section id="single-job" className={`app ${dark ? "darkest" : "light"}`}>
