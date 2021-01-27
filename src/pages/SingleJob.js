@@ -82,7 +82,12 @@ const SingleJob = ({ match }) => {
               </div>
               <h1>{job.company}</h1>
             </div>
-            <a href={job.company_url} className="sj-website">
+            <a
+              href={job.company_url}
+              className="sj-website"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               Company Site
             </a>
           </div>
