@@ -8,7 +8,7 @@ export default function App() {
     <Router>
       <Switch>
         <Route path="/" exact component={Home} />
-        <Route path="/job/:id" component={singleJob} />
+        <Route path="/job/:id" exact component={singleJob} />
       </Switch>
     </Router>
   );

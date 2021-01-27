@@ -26,7 +26,7 @@ const SingleJob = ({ match }) => {
       // if mode was saved -> dark / light
       return savedMode;
     } else if (userPrefersDark) {
-      // if  preferred color scheme is darak -> dark
+      // if  preferred color scheme is dark -> dark
       return true;
     } else {
       // otherwises -> light
@@ -47,6 +47,9 @@ const SingleJob = ({ match }) => {
     }
   };
 
+  console.log("This is match : " + match);
+  console.log("match id" + match.params.id);
+
   useEffect(() => {
     const getData = () =>
       axios
@@ -54,13 +57,14 @@ const SingleJob = ({ match }) => {
         .then((res) => {
           setJob(res.data);
           setLoading(false);
+          console.log(res.data);
         })
         .catch((e) => setError(true) && console.log(error));
 
     getData();
   }, []);
 
-  console.log(job);
+  // console.log(job);
 
   return (
     <section id="single-job" className={`app ${dark ? "darkest" : "light"}`}>
