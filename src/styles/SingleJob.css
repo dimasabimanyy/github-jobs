@@ -306,3 +306,9 @@ h6 {
     padding: 3rem;
   }
 }
+
+@media screen and (max-width: 678px) {
+  .sj-main-content {
+    padding: 1.5rem;
+  }
+}

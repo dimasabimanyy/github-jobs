@@ -56,7 +56,6 @@ const SingleJob = ({ match }) => {
         .then((res) => {
           setJob(res.data);
           setLoading(false);
-          console.log(res.data);
         })
         .catch((e) => setError(true) && console.log(error));
 
